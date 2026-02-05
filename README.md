@@ -53,38 +53,6 @@ src/
 └── main.tsx                 # Application entry point
 ```
 
-## Getting Started
-
-### Prerequisites
-- Node.js v18 or higher
-- npm or yarn
-
-### Installation
-
-Clone the repository:
-```bash
-git clone https://github.com/shaxntanu/dashboard-ui.git
-cd dashboard-ui
-```
-
-Install dependencies:
-```bash
-npm install
-```
-
-Start the development server:
-```bash
-npm run dev
-```
-
-The dashboard will be available at `http://localhost:5173`
-
-### Building for Production
-```bash
-npm run build
-```
-The output will be in the `dist/` directory.
-
 ## Simulation Controls
 
 The dashboard starts in mock simulation mode by default:
