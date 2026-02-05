@@ -27,14 +27,30 @@ A real-time visualization interface for monitoring and controlling a Hyperloop p
 ## Project Structure
 ```
 src/
-├── components/          # Reusable UI widgets (Gauges, Counters, Plots)
-├── layout/              # Dashboard grid layouts and panels
-├── digitalTwin/         # Visualization of the physical pod
-├── store/               # State management & business logic (Zustand)
-│   ├── telemetryStore.ts   # Main store & mock engine integration
-│   └── health.ts           # Health classification logic
-├── mock/                # Physics simulation for test data
-└── App.tsx              # Application entry point
+├── components/              # Reusable UI widgets
+│   ├── AlarmBanner.tsx     # Critical alarm notification banner
+│   ├── Counter.tsx         # Numeric counter display component
+│   ├── Gauge.tsx           # Semi-circular gauge meter
+│   ├── LinePlot.tsx        # Real-time line chart component
+│   └── SegmentBar.tsx      # Track segment visualization bar
+├── layout/                  # Dashboard layout components
+│   ├── DashboardGrid.tsx   # Main grid layout container
+│   ├── TopStatsRow.tsx     # Top statistics row
+│   ├── GaugesRow.tsx       # Gauge meters row
+│   ├── ChartsGrid.tsx      # Time-series charts grid
+│   └── RightPanel.tsx      # Right sidebar with controls
+├── digitalTwin/             # Physical pod visualization
+│   └── PodViewer.tsx       # 3D-style pod position viewer
+├── store/                   # State management (Zustand)
+│   ├── telemetryStore.ts   # Main telemetry state & actions
+│   └── health.ts           # Health status classification logic
+├── mock/                    # Simulation engine
+│   └── mockTelemetry.ts    # Physics-based mock data generator
+├── styles/                  # Global styles
+│   └── dashboard.css       # Dashboard styling
+├── App.tsx                  # Root application component
+├── ErrorBoundary.tsx        # Error handling wrapper
+└── main.tsx                 # Application entry point
 ```
 
 ## Getting Started
