@@ -16,7 +16,8 @@ export const RightPanel: React.FC = () => {
     running,
     startRun,
     stopRun,
-    emergencyStop
+    emergencyStop,
+    restartSimulation
   } = useTelemetryStore(useShallow(state => ({
     safetyState: state.safetyState,
     podHealth: state.podHealth,
@@ -29,7 +30,8 @@ export const RightPanel: React.FC = () => {
     running: state.running,
     startRun: state.startRun,
     stopRun: state.stopRun,
-    emergencyStop: state.emergencyStop
+    emergencyStop: state.emergencyStop,
+    restartSimulation: state.restartSimulation
   })));
 
   const selectedSegment = trackSegments.find(s => s.id === selectedSegmentId) ?? null;
@@ -39,22 +41,30 @@ export const RightPanel: React.FC = () => {
 
   return (
     <div className="right-panel">
-      <div className="right-panel-section">
+      <div className="right-panel-section system-state-card">
         <div className="right-panel-header">
-          <div className="panel-title">System State</div>
+          <div className="panel-title">System Safety State</div>
+          <div 
+            className={`safety-indicator ${safetyState === 'EMERGENCY_STOP' ? 'safety-indicator-critical' : 'safety-indicator-normal'}`}
+          />
         </div>
         <div className="counter-root">
           <div className="counter-label">Safety State</div>
-          <div className="counter-value">{safetyState}</div>
-          <div className="counter-label" style={{ marginTop: 4 }}>
+          <div className="counter-value" style={{ 
+            color: safetyState === 'EMERGENCY_STOP' ? '#ef4444' : '#e5e7eb',
+            fontSize: '20px'
+          }}>
+            {safetyState}
+          </div>
+          <div className="counter-label" style={{ marginTop: 8 }}>
             Pod Health
           </div>
           <div className="counter-value">{podHealth}</div>
-          <div className="counter-label" style={{ marginTop: 4 }}>
+          <div className="counter-label" style={{ marginTop: 8 }}>
             Track Health
           </div>
           <div className="counter-value">{trackHealth}</div>
-          <div className="counter-label" style={{ marginTop: 4 }}>
+          <div className="counter-label" style={{ marginTop: 8 }}>
             Control Latency
           </div>
           <div className="counter-value">{controlLatencyMs.toFixed(1)} ms</div>
@@ -66,8 +76,13 @@ export const RightPanel: React.FC = () => {
           <button className="btn" onClick={stopRun} disabled={controlsDisabled || !running}>
             Stop
           </button>
+        </div>
+        <div className="right-panel-controls" style={{ marginTop: 6 }}>
           <button className="btn btn-emergency" onClick={emergencyStop}>
             Emergency Stop
+          </button>
+          <button className="btn" onClick={restartSimulation}>
+            Restart
           </button>
         </div>
       </div>

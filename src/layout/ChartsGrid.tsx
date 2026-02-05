@@ -14,7 +14,7 @@ export const ChartsGrid: React.FC = () => {
         field="speed"
         stroke="#22c55e"
         yMin={0}
-        yMax={320}
+        yMax={300}
       />
       <LinePlot
         label="Power vs Time"
@@ -23,7 +23,7 @@ export const ChartsGrid: React.FC = () => {
         field="receivedPower"
         stroke="#38bdf8"
         yMin={0}
-        yMax={320}
+        yMax={300}
       />
       <LinePlot
         label="Temperature vs Time"

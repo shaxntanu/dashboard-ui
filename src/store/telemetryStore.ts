@@ -61,6 +61,7 @@ export interface TelemetryState {
   startRun: () => void;
   stopRun: () => void;
   emergencyStop: () => void;
+  restartSimulation: () => void;
   injectFault: (message: string, severity?: Fault['severity']) => void;
 }
 
@@ -127,6 +128,29 @@ export const useTelemetryStore = create<TelemetryState>((set, get) => {
           }
         ],
         activeFaultCount: state.activeFaultCount + 1
+      })),
+    restartSimulation: () =>
+      set(() => ({
+        running: false,
+        safetyState: 'IDLE',
+        speed: 0,
+        receivedPower: 0,
+        maxTemperature: 25,
+        podHealth: 'INVALID',
+        speedHealth: 'INVALID',
+        powerHealth: 'INVALID',
+        thermalHealth: 'INVALID',
+        trackHealth: 'INVALID',
+        history: [],
+        trackSegments: initialSegments,
+        selectedSegmentId: null,
+        faults: [],
+        activeFaultCount: 0,
+        alarmActive: false,
+        alarmAcknowledged: false,
+        activeTrackSegmentId: null,
+        powerReservePct: 100,
+        controlLatencyMs: 0
       })),
     injectFault: (message: string, severity: Fault['severity'] = 'WARNING') =>
       set(state => ({
