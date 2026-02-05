@@ -79,6 +79,38 @@ The dashboard starts in mock simulation mode by default:
 - **Restart**: Resets the entire simulation to initial state
 - **Inject Fault**: (Available in code) Triggers warning/critical messages to test the alarm banner
 
+## Changelog
+
+### February 5, 2026 - Major UI/UX Improvements
+
+**Gauge Visualization Enhancements**
+- Fixed gauge meter orientation - meters now display correctly as bottom semicircles with proper left-to-right value progression
+- Improved needle positioning using accurate trigonometric calculations
+- Adjusted min/max label positioning to prevent overlap with gauge arcs
+- Enhanced visual clarity with proper arc rendering
+
+**Safety & Control Features**
+- Added **Restart Button** alongside Emergency Stop for quick simulation reset
+- Implemented visual **Safety State Indicator** - a dynamic square that:
+  - Glows green during normal operations
+  - Pulses red with animation during emergency stop
+  - Provides instant visual feedback of system safety status
+- Increased System State card height for better visibility and information hierarchy
+- Enhanced Emergency Stop state visualization with red text highlighting
+
+**Data Synchronization**
+- Synchronized graph Y-axis ranges with gauge ranges for consistency:
+  - Speed: 0-300 m/s (previously 0-320)
+  - Power: 0-300 kW (previously 0-320)
+  - Temperature: 20-110 °C (unchanged)
+- Ensures real-time graphs and gauges display data on matching scales
+
+**Documentation & Licensing**
+- Updated README with clearer installation instructions
+- Fixed license inconsistency - properly documented MIT License
+- Improved project structure documentation
+- Added comprehensive feature descriptions
+
 ## Contributing
 
 Contributions are welcome! Here's how you can help:
